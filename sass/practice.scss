@@ -1,0 +1,439 @@
+:root {
+
+/* Colors: */
+--unnamed-color-3f51b5: #3F51B5;
+--unnamed-color-e81919: #E81919;
+
+/* Font/text values */
+--unnamed-font-family-yugothic: YuGothic;
+--unnamed-font-style-normal: normal;
+--unnamed-font-weight-medium: medium;
+--unnamed-font-weight-bold: bold;
+--unnamed-font-size-12: 12px;
+--unnamed-font-size-14: 14px;
+--unnamed-font-size-16: 16px;
+--unnamed-font-size-20: 20px;
+--unnamed-font-size-24: 24px;
+--unnamed-font-size-46: 46px;
+--unnamed-font-size-47: 47px;
+--unnamed-font-size-48: 48px;
+--unnamed-font-size-64: 64px;
+--unnamed-character-spacing-0: 0px;
+--unnamed-line-spacing-20: 20px;
+--unnamed-line-spacing-22: 22px;
+--unnamed-line-spacing-23: 23px;
+--unnamed-line-spacing-24: 24px;
+--unnamed-line-spacing-27: 27px;
+--unnamed-line-spacing-41: 41px;
+--unnamed-line-spacing-60: 60px;
+--unnamed-line-spacing-78: 78px;
+--unnamed-line-spacing-80: 80px;
+--unnamed-line-spacing-82: 82px;
+--unnamed-line-spacing-109: 109px;
+--unnamed-decoration-underline: underline;
+}
+
+
+
+//マップ型変数breakpointsを定義
+$breakpoints: (
+//キー　　値
+  'sm': 'screen and (max-width: 767px)', //767px以下（スマホ）用の表示
+  'md': 'screen and (min-width: 768px)' //768px以上（タブレット・PC）用の表示
+) !default;
+//メディアクエリ用のmixinを定義。デフォ値はmd
+@mixin mq($breakpoint: md) {
+  //map-get(マップ型変数, キー)で値を取得
+    @media #{map-get($breakpoints, $breakpoint)} {
+      //この中をカスタムできる
+      @content;
+    }
+  }
+
+
+
+body {
+  // color: #FFFFFF;
+  font-family: 'Noto Sans JP',Verdana, Tahoma, sans-serif;
+  line-height: 1.5;
+  background: #F8F8F8 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
+img {
+  width: 100%;
+  vertical-align: bottom;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+.a-font {
+  color: #000000;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+.clear::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.container {
+  width: 1280px;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include mq('sm') {
+    width: 100%;
+    // max-width: 90%;
+    margin: 0 0;
+    max-width: 100%;
+}
+}
+
+// btn
+.btn {
+  padding: 20px 120px;
+  display: inline-block;
+  color: #fff;
+  font-weight: bold;
+  @include mq('sm') {
+    font-size: 15px;
+    padding: 10px 40px;
+  }
+}
+
+
+.btn:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+
+// ドロワーメニューのレスポンシブ
+@media (min-width: 768px) {
+  .drawer-hamburger{
+      display: none;
+  }
+  .drawer--right .drawer-nav{
+      right: 0;
+  }
+  .drawer-nav{
+      position: relative;
+  }
+  .drawer-nav .drawer-menu li{
+      display: inline-block;
+  }
+}
+
+.drawer-hamburger{
+  display: none;
+}
+
+
+// header
+header {
+  // 上部に固定表示するため、z-indexは1以上
+    z-index: 20;
+  }
+
+.header-inner {
+  @include mq('sm') {
+  height: 60px;
+}
+}
+
+
+header {
+  position: fixed;
+    top: 0;
+    right: 0px;
+    width: 100%;
+    background: #F8F8F8;
+}
+
+.header-left {
+  float: left;
+  margin-left: auto;
+  opacity: 1;
+  padding-top: 25px;
+  @include mq('sm') {
+  padding-top: 20px;
+}
+}
+
+.f_logo {
+  width: 120px;
+  @include mq('sm') {
+    padding-left: 20px;
+    line-height: 20px;
+  }
+}
+
+.header-right {
+  float: right;
+ font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-medium) var(--unnamed-font-size-16)/var(--unnamed-line-spacing-27) var(--unnamed-font-family-yugothic);
+ letter-spacing: var(--unnamed-character-spacing-0);
+ text-align: left;
+ font: normal normal medium 16px/27px Yeseva One;
+ letter-spacing: 0px;
+ color: #FFFFFF;
+ opacity: 1;
+ line-height: 1.7;
+ padding: 27px 0px;
+ font-size: 16px;
+ 
+}
+
+
+.header-nav-item {
+  float: left;
+  margin-left: 40px;
+}
+
+.header-nav {
+  font-family: 'Yeseva One', sans-serif;
+}
+
+.drawer-hamburger-icon {
+  padding-right: 20px;
+  background-color: #43A3D2;
+}
+
+.js-menu__item__link {
+  color: #333333;
+}
+
+
+// 共通クラス
+.section-title {
+  @include mq('md') {
+  text-align: left;
+  }
+  font: normal normal normal 24px/24px Yeseva One;
+  letter-spacing: 0px;
+  color: #202642;
+  opacity: 1; 
+  margin-bottom: 48px;
+  @include mq('sm') {
+   text-align: center;
+  }
+}
+
+.inner {
+  margin: auto;
+  @include mq('md') {
+    width: 696px;
+  }
+  @include mq('sm') {
+    
+   }
+}
+
+// top 
+.top-inner {
+  @include mq('md') {
+  height: 934px;
+  background: url(../img/top.png) ;
+  margin-bottom: 80px;
+}
+@include mq('sm') {
+  padding-top: 134%;
+  background: url(../img/top.png)  center center/100%;
+  max-width: 85%;
+  margin: auto;
+  margin-bottom: 80px;
+}
+}
+
+// product
+.product-flex {
+  @include mq('md') {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  img {
+    width: 336px;
+    height: auto;
+    @include mq('sm') {
+      width: 60%;
+      height: auto;
+    }
+  }
+}
+
+.product-item-picture {
+  @include mq('md') {
+  margin-right: 24px;
+}
+
+}
+
+.product-item-category {
+  padding: 3px 8px 2px;
+  color: #202642;
+  background: #fff;
+  border: 1px solid #202642;
+  border-radius: 8px;
+  display: inline-block;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.product-item-title a {
+  color: #202642;
+  background: linear-gradient(to right, #fafddd 0, #eefd9c 50%, #ccfdb6 100%);
+  transition: .2s;
+  background-size: 100% 100%;
+}
+
+.product-item-title {
+  margin-bottom: 70px;
+}
+
+.product-container {
+  @include mq('sm') {
+    text-align: center;
+    // max-width: 57%;
+    // margin: auto;
+  }
+}
+
+.product-item-text {
+  @include mq('sm') {
+    // text-align: left;
+  }
+}
+
+.product-container::after {
+  content: '';
+    background: url(../img/line.png) repeat-x;
+    width: 100%;
+    height: 4px;
+    display: block;
+    bottom: 0;
+    left: 0;
+    margin-top: 175px;
+    margin-bottom: 80px;
+}
+
+// news
+.news-flex {
+  @include mq('md') {
+  display: flex;
+}
+}
+
+.news-item {
+  @include mq('sm') {
+    width: 60%;
+    margin: auto;
+  }
+}
+
+.news-inner {
+  padding-bottom: 152px;
+}
+
+// footer 
+.footer {
+  background: url(../img/footer.png);
+  background-repeat  : no-repeat;
+  @include mq('md') {
+    height: 330px;
+  }
+  @include mq('sm') {
+    background: none;
+    height: 114px;
+  }
+}
+
+.footer-copyright {
+  text-align: center;
+  padding-bottom: 17px;
+  @include mq('md') {
+    color: rgba(136, 136, 136, 1);
+  }
+  font-size: 12px;
+  @include mq('sm') {
+  color: #202642;
+}
+}
+
+.footer-inner {
+  position: relative;
+}
+
+.footer-flex {
+  @include mq('md') {
+    width: 696px;
+    left: 50%;
+    margin-left: -348px;
+    display: flex;
+    height: 116px;
+    position: absolute;
+    top: 7pc;
+    z-index: 2;
+    border: 1px solid #dcdcdc;
+  }
+  @include mq('sm') {
+    width: 100%;
+    max-width: 100%;
+}
+}
+
+.footer-item {
+  @include mq('md') {
+    width: 348px;
+}
+@include mq('sm') {
+
+}
+}
+
+
+.footer-text {
+ font: normal normal normal 16px/10px Yeseva One;
+ letter-spacing: 0px;
+ color: #FFFFFF;
+ opacity: 1;
+ @include mq('sm') {
+  color: #202642;
+  text-align: center;
+}
+}
+
+.footer-item-inner {
+  margin: 22px 32px 32px 32px;
+}
+
+.mail-color {
+  color: #FFFFFF;
+  @include mq('sm') {
+    color: #202642;
+  }
+}
+
+.mail-place {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.fa-twitter {
+  color: #FFFFFF;
+  @include mq('sm') {
+    color: #202642;
+  }
+}
+
+.twitter-place {
+  text-align: center;
+  margin-top: 10px;
+}
